@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your 12-item to-do list became 31 | Jake Wolpert</title>
+<meta name="description" content="The problem usually isn't how much you're working. It's what kind of work is dominating the week. A simple filter for anyone building on their own.">
+<meta property="og:title" content="Your 12-item to-do list became 31">
+<meta property="og:description" content="The problem usually isn't how much you're working. It's what kind of work is dominating the week.">
+<meta property="og:type" content="article">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Hanken+Grotesk:wght@400;500;600&family=Fraunces:ital,opsz,wght@1,9..40,400&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --bone:#EFE9DC;
+    --bone-deep:#E5DDCB;
+    --cream:#FBF8F1;
+    --ink:#22241F;
+    --ink-soft:#34362F;
+    --green:#216B4E;
+    --green-deep:#123E2C;
+    --muted:#6E6E64;
+    --line:#D6CEBD;
+    --sand:#D99A5B;
+    --sand-deep:#C07F3F;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Hanken Grotesk',sans-serif;-webkit-font-smoothing:antialiased;
+    color:var(--ink);font-size:19px;line-height:1.68;
+    background:var(--bone);
+    background-image:radial-gradient(1100px 560px at 94% -8%, rgba(33,107,78,.06), transparent 60%);
+    background-attachment:fixed;
+  }
+  .wrap{max-width:1240px;margin:0 auto;padding:0 60px;}
+  a{color:inherit;}
+  .serif{font-family:'Fraunces',serif;font-optical-sizing:none;}
+
+  /* nav (matches homepage) */
+  nav{position:sticky;top:0;z-index:50;background:rgba(239,233,220,.86);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:74px;}
+  .brand{font-family:'Sora',sans-serif;font-weight:600;font-size:20px;letter-spacing:-.01em;text-decoration:none;display:flex;align-items:center;gap:10px;}
+  .brand .dot{width:9px;height:9px;border-radius:50%;background:var(--sand);}
+  .nav-links{display:flex;gap:28px;align-items:center;}
+  .nav-links a{text-decoration:none;font-size:15px;color:var(--muted);font-weight:500;transition:color .2s;}
+  .nav-links a:hover{color:var(--ink);}
+  .nav-links a.active{color:var(--ink);}
+  .nav-links .ncta{color:var(--green-deep);font-weight:600;border:1.5px solid var(--green);padding:9px 18px;border-radius:7px;transition:background .2s,color .2s;}
+  .nav-links .ncta:hover{background:var(--green);color:var(--cream);}
+  .nav-toggle{display:none;background:none;border:none;font-size:15px;font-family:'Sora',sans-serif;color:var(--ink);cursor:pointer;font-weight:500;}
+
+  /* article */
+  .article-head{background:var(--green-deep);color:var(--cream);padding:64px 0 56px;background-image:radial-gradient(700px 380px at 90% 120%,rgba(217,154,91,.12),transparent 60%);}
+  .article-head .inner{max-width:680px;margin:0 auto;padding:0 32px;}
+  .article-head .back{display:inline-block;margin-bottom:28px;font-size:14px;color:rgba(251,248,241,.6);text-decoration:none;font-weight:500;transition:color .2s;}
+  .article-head .back:hover{color:var(--sand);}
+  .article-head .meta{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--sand);font-weight:600;margin-bottom:18px;}
+  .article-head h1{font-family:'Sora',sans-serif;font-size:clamp(34px,5vw,54px);font-weight:600;line-height:1.04;letter-spacing:-.03em;color:var(--cream);}
+
+  .article{max-width:680px;margin:0 auto;padding:0 32px 60px;}
+  .article .lead{font-family:'Fraunces',serif;font-style:italic;font-optical-sizing:none;font-size:clamp(22px,2.8vw,27px);line-height:1.4;color:var(--ink);margin:48px 0 28px;}
+  .article h2{font-family:'Sora',sans-serif;font-size:clamp(22px,3vw,29px);font-weight:600;line-height:1.14;letter-spacing:-.02em;margin:48px 0 18px;color:var(--ink);display:flex;align-items:baseline;gap:16px;}
+  .article h2 .num{font-family:'Sora',sans-serif;font-size:18px;font-weight:600;color:var(--sand-deep);flex:none;border:1.5px solid var(--sand);border-radius:50%;width:38px;height:38px;display:inline-flex;align-items:center;justify-content:center;line-height:1;}
+  .article p{margin-bottom:22px;color:var(--ink-soft);}
+  .article ul{list-style:none;margin:0 0 24px;}
+  .article li{position:relative;padding:8px 0 8px 26px;color:var(--ink-soft);}
+  .article li:before{content:"";position:absolute;left:0;top:18px;width:12px;height:2px;background:var(--sand);}
+  .article hr{border:none;border-top:1px solid var(--line);margin:40px 0;}
+  .article strong{color:var(--ink);font-weight:600;}
+  .article .emph{font-style:italic;}
+  .article .pull{font-family:'Fraunces',serif;font-style:italic;font-optical-sizing:none;font-size:clamp(24px,3.6vw,32px);line-height:1.3;color:var(--green-deep);margin:44px 0;padding:8px 0 8px 28px;border-left:3px solid var(--sand);}
+  .article .back-bottom{display:inline-block;margin-top:30px;font-size:15px;color:var(--muted);text-decoration:none;font-weight:500;transition:color .2s;}
+  .article .back-bottom:hover{color:var(--green-deep);}
+
+  /* footer (matches homepage) */
+  footer{background:#0E2C1F;color:rgba(251,248,241,.7);padding:52px 0;}
+  .foot-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:24px;}
+  .foot-brand{font-family:'Sora',sans-serif;font-size:21px;color:var(--cream);font-weight:600;display:flex;align-items:center;gap:10px;}
+  .foot-brand .dot{width:9px;height:9px;border-radius:50%;background:var(--sand);}
+  .foot-links{display:flex;gap:26px;}
+  .foot-links a{text-decoration:none;font-size:15px;color:rgba(251,248,241,.7);transition:color .2s;}
+  .foot-links a:hover{color:var(--cream);}
+
+  @media(max-width:880px){
+    body{font-size:18px;}
+    .wrap{padding:0 26px;}
+    .nav-links{display:none;}
+    .nav-links.open{display:flex;flex-direction:column;position:absolute;top:74px;left:0;right:0;background:var(--bone);border-bottom:1px solid var(--line);padding:18px 26px 26px;gap:18px;align-items:flex-start;}
+    .nav-toggle{display:block;}
+    .article{padding:0 4px 70px;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap nav-inner">
+    <a href="index.html" class="brand"><span class="dot"></span>Jake Wolpert</a>
+    <button class="nav-toggle" aria-label="Menu" onclick="document.getElementById('navlinks').classList.toggle('open')">Menu</button>
+    <div class="nav-links" id="navlinks">
+      <a href="index.html#paths">Who I work with</a>
+      <a href="index.html#ethic">How I coach</a>
+      <a href="index.html#work">Working together</a>
+      <a href="resources.html" class="active">Resources</a>
+      <a href="index.html#book" class="ncta">Book a call</a>
+    </div>
+  </div>
+</nav>
+
+<div class="article-head">
+  <div class="inner">
+    <a href="resources.html" class="back">&larr; Back to resources</a>
+    <p class="meta">For people building solo</p>
+    <h1>Your 12-item to-do list became 31</h1>
+  </div>
+</div>
+
+<article class="article">
+
+  <p class="lead">It's Friday at 7pm and you're wiped.</p>
+
+  <p>You've been pulling 12-hour days all week. And somehow it feels like you did a ton and nothing at the same time.</p>
+
+  <p>Your to-do list spawned a new to-do list. You started the week with 12 things. You're ending it with 31. It's all good. You'll get it done on Saturday. Those weekend plans weren't serious anyway.</p>
+
+  <p>You didn't really choose any of it. You just reacted to whatever was loudest, all week long.</p>
+
+  <p>This is a lesson we all learn on our own: the problem usually isn't how much you're working. It's what kind of work is dominating the week.</p>
+
+  <p>Almost everything you do falls into one of three groups. And each one wants a different thing from you.</p>
+
+  <h2><span class="num">1</span>Maximize: the work that makes and keeps money</h2>
+
+  <p>This is revenue-generating and revenue-serving. Landing new clients, and taking care of the ones you've got.</p>
+
+  <p>When a client emails you something "urgent," answering it is not a distraction. That's you protecting revenue you already earned. It belongs at the top of the list. So does the outreach, the pitch, the follow-up you keep meaning to send.</p>
+
+  <p>This is the work you want to spend as much of your week on as humanly possible. Most people spend less than they think.</p>
+
+  <h2><span class="num">2</span>Automate: the work that just keeps the lights on</h2>
+
+  <p>Invoicing. Scheduling. Inbox triage. The admin.</p>
+
+  <p>It has to happen, so you do it by hand, fifteen minutes here, twenty minutes there, and you barely notice it adding up. Completely reasonable. It felt like nothing each time.</p>
+
+  <p>Then you look up and it ate six hours of your week.</p>
+
+  <p class="pull">You're a business owner spending your most expensive hours doing your cheapest work.</p>
+
+  <p>This is the stuff to automate, template, or hand off, not grind through manually every single time. A tool, a system, a recurring setup. Anything so it stops quietly taxing every day.</p>
+
+  <h2><span class="num">3</span>Cut: everything else</h2>
+
+  <p>Here's the uncomfortable one.</p>
+
+  <p>A big chunk of your week is neither making money nor keeping the lights on. It's the thing that <span class="emph">felt</span> productive in the moment. Reorganizing the CRM. Tweaking the logo again. The call you said yes to two weeks ago and can't remember why. The "quick" task that ate an hour.</p>
+
+  <p>And look, of course you did it. It scratched the itch of being busy, and busy feels safe. Nobody would fault you for any single one of those choices.</p>
+
+  <p>But none of it moved you. Stack a year of it and you've been slammed the whole time and somehow ended up right where you started.</p>
+
+  <p>This is the stuff to scrutinize, hard. Most of it can just go.</p>
+
+  <hr>
+
+  <p>When you maximize the work that pays, automate the work that drains, and cut the work that lies to you, the week stops running you. You end Friday with something to show for it, not just a longer to-do list.</p>
+
+  <h2>See it for yourself</h2>
+
+  <p>You can't fix what you can't see. And most people have a story about where their time goes that turns out to be dead wrong.</p>
+
+  <p>So track it for one week. Don't change anything yet. Just watch.</p>
+
+  <p>Use whatever's easiest:</p>
+
+  <ul>
+    <li>Color-code your calendar blocks at the end of each day</li>
+    <li>Run a tracker like Toggl</li>
+    <li>Keep a dead-simple spreadsheet, rough hours, three columns</li>
+  </ul>
+
+  <p>Maximize, automate, cut.</p>
+
+  <p>Add it up Friday. Most people are startled by how little of the week was actually spent making or keeping money, and how much went to the other two.</p>
+
+  <p>You don't have to overhaul anything today. You just have to see it.</p>
+
+  <p>Once you've watched a real week sorted into those three columns, it gets very hard to keep calling the busyness progress.</p>
+
+  <a href="resources.html" class="back-bottom">&larr; Back to resources</a>
+</article>
+
+<footer>
+  <div class="wrap foot-inner">
+    <div class="foot-brand"><span class="dot"></span>Jake Wolpert</div>
+    <div class="foot-links">
+      <a href="index.html#paths">Who I work with</a>
+      <a href="index.html#ethic">How I coach</a>
+      <a href="resources.html">Resources</a>
+      <a href="index.html#book">Book a call</a>
+    </div>
+    <div style="font-size:14px;"><a href="mailto:jake@jakewolpert.com" style="text-decoration:none;">jake@jakewolpert.com</a></div>
+  </div>
+</footer>
+
+<script>
+  document.querySelectorAll('#navlinks a').forEach(a=>a.addEventListener('click',()=>document.getElementById('navlinks').classList.remove('open')));
+</script>
+
+</body>
+</html>
