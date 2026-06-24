@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Resources | Jake Wolpert</title>
+<meta name="description" content="Writing for people thinking through what's next, building on their own, or deciding whether to make the leap.">
+<meta property="og:title" content="Resources | Jake Wolpert">
+<meta property="og:type" content="website">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Hanken+Grotesk:wght@400;500;600&family=Fraunces:ital,opsz,wght@1,9..40,400&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --bone:#EFE9DC;
+    --bone-deep:#E5DDCB;
+    --cream:#FBF8F1;
+    --ink:#22241F;
+    --ink-soft:#34362F;
+    --green:#216B4E;
+    --green-deep:#123E2C;
+    --muted:#6E6E64;
+    --line:#D6CEBD;
+    --line-dark:rgba(251,248,241,.16);
+    --sand:#D99A5B;
+    --sand-deep:#C07F3F;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Hanken Grotesk',sans-serif;-webkit-font-smoothing:antialiased;
+    color:var(--ink);font-size:18px;line-height:1.6;
+    background:var(--bone);
+    background-image:
+      radial-gradient(1100px 560px at 94% -8%, rgba(33,107,78,.07), transparent 60%),
+      radial-gradient(820px 460px at -8% 118%, rgba(195,106,74,.05), transparent 55%);
+    background-attachment:fixed;
+  }
+  .wrap{max-width:1240px;margin:0 auto;padding:0 60px;}
+  a{color:inherit;}
+  .serif{font-family:'Fraunces',serif;font-optical-sizing:none;}
+
+  .btn{display:inline-block;font-family:'Sora',sans-serif;font-size:15px;font-weight:600;letter-spacing:.005em;padding:17px 32px;border-radius:9px;text-decoration:none;transition:background .2s,color .2s,transform .15s;border:1.5px solid transparent;}
+  .btn-cream{background:var(--cream);color:var(--green-deep);}
+  .btn-cream:hover{background:#fff;transform:translateY(-2px);}
+
+  /* nav */
+  nav{position:sticky;top:0;z-index:50;background:rgba(239,233,220,.86);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:74px;}
+  .brand{font-family:'Sora',sans-serif;font-weight:600;font-size:20px;letter-spacing:-.01em;text-decoration:none;display:flex;align-items:center;gap:10px;}
+  .brand .dot{width:9px;height:9px;border-radius:50%;background:var(--sand);}
+  .nav-links{display:flex;gap:28px;align-items:center;}
+  .nav-links a{text-decoration:none;font-size:15px;color:var(--muted);font-weight:500;transition:color .2s;}
+  .nav-links a:hover{color:var(--ink);}
+  .nav-links a.active{color:var(--ink);}
+  .nav-links .ncta{color:var(--green-deep);font-weight:600;border:1.5px solid var(--green);padding:9px 18px;border-radius:7px;transition:background .2s,color .2s;}
+  .nav-links .ncta:hover{background:var(--green);color:var(--cream);}
+  .nav-toggle{display:none;background:none;border:none;font-size:15px;font-family:'Sora',sans-serif;color:var(--ink);cursor:pointer;font-weight:500;}
+
+  /* header */
+  .res-head{padding:80px 0 20px;}
+  .res-head .label{font-size:13px;letter-spacing:.18em;text-transform:uppercase;font-weight:600;margin-bottom:22px;color:var(--green);}
+  .res-head h1{font-family:'Sora',sans-serif;font-size:clamp(38px,6vw,64px);font-weight:600;line-height:1.02;letter-spacing:-.035em;margin-bottom:22px;}
+  .res-head h1 em{font-family:'Fraunces',serif;font-style:italic;font-optical-sizing:none;font-weight:400;color:var(--sand-deep);}
+  .res-head p{font-size:20px;color:var(--ink-soft);max-width:54ch;line-height:1.5;}
+
+  /* article list */
+  .res-list{padding:50px 0 90px;display:flex;flex-direction:column;gap:0;}
+  .res-item{display:block;text-decoration:none;padding:38px 0;border-top:1px solid var(--line);transition:padding-left .25s ease;}
+  .res-item:last-child{border-bottom:1px solid var(--line);}
+  .res-item:hover{padding-left:12px;}
+  .res-item .meta{font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--sand-deep);font-weight:600;margin-bottom:14px;}
+  .res-item h2{font-family:'Sora',sans-serif;font-size:clamp(24px,3.4vw,34px);font-weight:600;line-height:1.12;letter-spacing:-.02em;color:var(--ink);margin-bottom:14px;}
+  .res-item p{font-size:17.5px;color:var(--ink-soft);line-height:1.55;max-width:62ch;margin-bottom:16px;}
+  .res-item .more{font-family:'Sora',sans-serif;font-size:15px;font-weight:600;color:var(--green-deep);}
+  .res-item .more .arrow{transition:margin-left .2s ease;display:inline-block;}
+  .res-item:hover .more .arrow{margin-left:5px;}
+
+  /* coming soon item */
+  .res-item.soon{opacity:.55;pointer-events:none;}
+  .res-item.soon .meta{color:var(--muted);}
+
+  /* CTA */
+  .res-cta{background:var(--green-deep);color:var(--cream);padding:88px 0;text-align:center;background-image:radial-gradient(800px 460px at 88% 115%,rgba(217,154,91,.10),transparent 60%);}
+  .res-cta h2{font-family:'Sora',sans-serif;font-size:clamp(30px,4.6vw,48px);font-weight:600;line-height:1.08;letter-spacing:-.025em;max-width:20ch;margin:0 auto 20px;color:var(--cream);}
+  .res-cta h2 em{font-family:'Fraunces',serif;font-style:italic;font-optical-sizing:none;font-weight:400;color:var(--sand);}
+  .res-cta p{font-size:19px;color:rgba(251,248,241,.82);max-width:48ch;margin:0 auto 36px;line-height:1.5;}
+
+  /* footer */
+  footer{background:#0E2C1F;color:rgba(251,248,241,.7);padding:52px 0;}
+  .foot-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:24px;}
+  .foot-brand{font-family:'Sora',sans-serif;font-size:21px;color:var(--cream);font-weight:600;display:flex;align-items:center;gap:10px;}
+  .foot-brand .dot{width:9px;height:9px;border-radius:50%;background:var(--sand);}
+  .foot-links{display:flex;gap:26px;}
+  .foot-links a{text-decoration:none;font-size:15px;color:rgba(251,248,241,.7);transition:color .2s;}
+  .foot-links a:hover{color:var(--cream);}
+
+  @media(max-width:880px){
+    body{font-size:17px;}
+    .wrap{padding:0 26px;}
+    .nav-links{display:none;}
+    .nav-links.open{display:flex;flex-direction:column;position:absolute;top:74px;left:0;right:0;background:var(--bone);border-bottom:1px solid var(--line);padding:18px 26px 26px;gap:18px;align-items:flex-start;}
+    .nav-toggle{display:block;}
+    .res-head{padding:54px 0 10px;}
+    .res-cta{padding:64px 0;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap nav-inner">
+    <a href="index.html" class="brand"><span class="dot"></span>Jake Wolpert</a>
+    <button class="nav-toggle" aria-label="Menu" onclick="document.getElementById('navlinks').classList.toggle('open')">Menu</button>
+    <div class="nav-links" id="navlinks">
+      <a href="index.html#paths">Who I work with</a>
+      <a href="index.html#ethic">How I coach</a>
+      <a href="index.html#work">Working together</a>
+      <a href="resources.html" class="active">Resources</a>
+      <a href="index.html#book" class="ncta">Book a call</a>
+    </div>
+  </div>
+</nav>
+
+<header class="res-head">
+  <div class="wrap">
+    <p class="label">Resources</p>
+    <h1>Things worth <em>thinking through</em>.</h1>
+    <p>Writing for people deciding whether to leap, building something on their own, or just trying to figure out what's next. No fluff, no pep talks.</p>
+  </div>
+</header>
+
+<section class="res-list">
+  <div class="wrap">
+
+    <a href="the-week.html" class="res-item">
+      <p class="meta">For people building solo</p>
+      <h2>Your 12-item to-do list became 31</h2>
+      <p>You're working harder than ever and somehow standing still. The problem usually isn't how much you're working, it's what kind of work is eating the week. A simple filter to fix it.</p>
+      <span class="more">Read it <span class="arrow">&rarr;</span></span>
+    </a>
+
+    <div class="res-item soon">
+      <p class="meta">Coming soon</p>
+      <h2>Not everyone should go out on their own</h2>
+      <p>An honest look at what going solo actually takes, so you can decide if it's really for you before you make the leap.</p>
+      <span class="more">Coming soon</span>
+    </div>
+
+  </div>
+</section>
+
+<section class="res-cta">
+  <div class="wrap">
+    <h2>Reading this and nodding? <em>Then we should talk.</em></h2>
+    <a href="index.html#book" class="btn btn-cream">Book an intro call</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot-inner">
+    <div class="foot-brand"><span class="dot"></span>Jake Wolpert</div>
+    <div class="foot-links">
+      <a href="index.html#paths">Who I work with</a>
+      <a href="index.html#ethic">How I coach</a>
+      <a href="resources.html">Resources</a>
+      <a href="index.html#book">Book a call</a>
+    </div>
+    <div style="font-size:14px;"><a href="mailto:jake@jakewolpert.com" style="text-decoration:none;">jake@jakewolpert.com</a></div>
+  </div>
+</footer>
+
+<script>
+  document.querySelectorAll('#navlinks a').forEach(a=>a.addEventListener('click',()=>document.getElementById('navlinks').classList.remove('open')));
+</script>
+
+</body>
+</html>
