@@ -123,12 +123,13 @@
   .erow .ebody p{color:rgba(251,248,241,.8);font-size:16.5px;line-height:1.58;max-width:54ch;}
   .ethic-foot{margin-top:46px;font-family:'Fraunces',serif;font-style:italic;font-size:clamp(20px,2.4vw,26px);line-height:1.4;color:var(--cream);max-width:40ch;}
 
-  .quotes-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;margin-top:50px;max-width:760px;}
-  .qcard{background:var(--cream);border:1px solid var(--line);border-radius:14px;padding:32px 30px;display:flex;flex-direction:column;}  
-  .qcard .mk{font-family:'Fraunces',serif;font-size:50px;line-height:.4;color:var(--sand-deep);height:30px;}
-  .qcard blockquote{font-size:17px;line-height:1.56;color:var(--ink-soft);flex:1;margin:14px 0 24px;}
-  .qcard .attr{font-size:14px;color:var(--muted);border-top:1px solid var(--line);padding-top:18px;}
-  .qcard .attr strong{color:var(--ink);font-weight:600;display:block;font-size:15px;margin-bottom:2px;font-family:'Sora',sans-serif;}
+  .quotes-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:40px;margin-top:50px;}
+  .qcard{position:relative;background:var(--green-deep);border-radius:18px;padding:52px 48px 44px;display:flex;flex-direction:column;box-shadow:0 24px 50px -24px rgba(18,62,44,.55);overflow:hidden;}
+  .qcard:after{content:"";position:absolute;right:0;bottom:0;width:55%;height:50%;background:radial-gradient(120% 120% at 100% 100%,rgba(217,154,91,.16),transparent 65%);pointer-events:none;}
+  .qcard .mk{font-family:'Fraunces',serif;font-size:80px;line-height:.7;color:var(--sand);height:44px;}
+  .qcard blockquote{font-size:20px;line-height:1.5;color:var(--cream);flex:1;margin:18px 0 28px;font-weight:400;position:relative;z-index:1;}
+  .qcard .attr{font-size:14px;color:rgba(251,248,241,.6);border-top:1px solid var(--line-dark);padding-top:20px;position:relative;z-index:1;}
+  .qcard .attr strong{color:var(--sand);font-weight:600;display:block;font-size:16px;margin-bottom:3px;font-family:'Sora',sans-serif;letter-spacing:-.01em;}
   .placeholder-note{margin-top:28px;font-size:14px;color:var(--muted);font-style:italic;}
 
   .work-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:50px;}
